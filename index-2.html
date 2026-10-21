@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100d0f">
+<meta name="description" content="SUICIDIO X MR.COOP — estreno 26 de diciembre de 2026.">
+<title>SUICIDIO X MR.COOP | Próximamente</title>
+<style>
+:root{--bg:#100d0f;--panel:#191416;--red:#c51f32;--muted:#b9afb2;--white:#f4eeee}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;color:var(--white);font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at 50% 0%,#3b111a 0%,#170f12 38%,#090809 100%);display:flex;align-items:center;justify-content:center;padding:24px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;background-image:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px,transparent 5px 7px);mix-blend-mode:overlay}
+.wrap{width:min(720px,100%);position:relative;border:1px solid #56202a;background:rgba(12,10,11,.88);box-shadow:0 0 55px #000;padding:clamp(22px,5vw,48px);text-align:center}
+.top{font-size:11px;letter-spacing:.35em;color:#d5c9cc;margin-bottom:24px}.dot{display:inline-block;width:8px;height:8px;background:var(--red);margin-right:10px;box-shadow:0 0 12px var(--red)}
+.art{height:150px;margin:0 auto 26px;max-width:480px;position:relative;overflow:hidden;border:1px solid #4b1a22;background:linear-gradient(90deg,transparent,#59121e66,transparent),repeating-linear-gradient(0deg,#171214 0 12px,#21191c 13px 14px)}
+.art:before,.art:after{content:"";position:absolute;top:0;bottom:0;width:1px;background:#75222d;box-shadow:0 0 16px #c51f32}.art:before{left:25%}.art:after{right:25%}
+.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:56px;color:#8f1c2b;opacity:.65;font-weight:200}
+h1{font-size:clamp(44px,12vw,88px);letter-spacing:.06em;line-height:.9;margin:0;font-weight:900;text-shadow:3px 3px 0 #50131c}
+.sub{color:var(--red);letter-spacing:.34em;font-size:clamp(13px,3vw,18px);margin:18px 0 28px}
+.rule{height:1px;background:linear-gradient(90deg,transparent,#762331,transparent);margin:25px 0}
+.kicker{font-size:11px;letter-spacing:.25em;color:var(--muted);text-transform:uppercase}
+.date{font-size:clamp(20px,5vw,30px);font-weight:700;letter-spacing:.16em;margin:12px 0 25px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:0 auto 24px;max-width:520px}
+.unit{border:1px solid #46202a;background:#160f12;padding:14px 5px}
+.num{font-size:clamp(27px,7vw,43px);font-weight:800;color:var(--white);font-variant-numeric:tabular-nums}
+.label{font-size:9px;letter-spacing:.18em;color:#c9b7bb;margin-top:6px}
+.message{font-size:12px;color:#b9afb2;letter-spacing:.13em;line-height:1.8}
+.footer{font-size:10px;letter-spacing:.22em;color:#77686c;margin-top:32px}
+@media(max-width:420px){body{padding:12px}.wrap{padding:22px 15px}.timer{gap:5px}.unit{padding:12px 2px}.label{font-size:8px;letter-spacing:.1em}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top"><span class="dot"></span>MR.COOP PRESENTA</div>
+  <div class="art" aria-hidden="true"><div class="cross">✛</div></div>
+  <h1>SUICIDIO</h1>
+  <div class="sub">X MR.COOP</div>
+  <div class="rule"></div>
+  <div class="kicker">La fecha está marcada</div>
+  <div class="date">26 · 12 · 2026</div>
+  <div class="timer" aria-label="Cuenta regresiva">
+    <div class="unit"><div class="num" id="days">--</div><div class="label">DÍAS</div></div>
+    <div class="unit"><div class="num" id="hours">--</div><div class="label">HORAS</div></div>
+    <div class="unit"><div class="num" id="minutes">--</div><div class="label">MINUTOS</div></div>
+    <div class="unit"><div class="num" id="seconds">--</div><div class="label">SEGUNDOS</div></div>
+  </div>
+  <div class="message" id="message">UNA EXPERIENCIA SONORA DE MR.COOP<br>PRÓXIMAMENTE</div>
+  <div class="rule"></div>
+  <div class="footer">NEGRO · ROJO · RUIDO INTERIOR</div>
+</main>
+<script>
+(function(){
+ const target = new Date('2026-12-26T00:00:00-06:00').getTime();
+ const ids = ['days','hours','minutes','seconds'];
+ function update(){
+   let diff = target - Date.now();
+   if(diff <= 0){
+     ids.forEach(id=>document.getElementById(id).textContent='00');
+     document.getElementById('message').innerHTML='EL MOMENTO HA LLEGADO<br>SUICIDIO X MR.COOP';
+     return;
+   }
+   const vals=[Math.floor(diff/86400000),Math.floor(diff%86400000/3600000),Math.floor(diff%3600000/60000),Math.floor(diff%60000/1000)];
+   vals.forEach((v,i)=>document.getElementById(ids[i]).textContent=String(v).padStart(2,'0'));
+ }
+ update();setInterval(update,1000);
+})();
+</script>
+</body>
+</html>
